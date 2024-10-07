@@ -14,16 +14,17 @@ use function random_bytes;
 
 use const SEEK_CUR;
 
+/**
+ * @uses MockObject
+ */
 final class PartOfMultipartStreamTest extends TestCase
 {
-    /** @var MockObject&StreamInterface */
-    private $stream;
+    private MockObject&StreamInterface $stream;
 
     /** @var non-empty-string */
-    private $name;
+    private string $name;
 
-    /** @var PartOfMultipartStream */
-    private $part;
+    private PartOfMultipartStream $part;
 
     protected function setUp(): void
     {
@@ -88,8 +89,8 @@ final class PartOfMultipartStreamTest extends TestCase
         $this->stream
             ->expects(self::once())
             ->method('tell')
-            ->willReturn(1235813);
-        self::assertSame(1235813, $this->part->tell());
+            ->willReturn(1_235_813);
+        self::assertSame(1_235_813, $this->part->tell());
 
         $this->stream
             ->expects(self::once())
